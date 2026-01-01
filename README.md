@@ -19,7 +19,7 @@ Requires:
 - Raspberry Pi zero or other with the "pocket" GPIO daughterboard (see below)
 - Chirp radio software installed (includes chirpc the CLI)
 - Required cable from the Pi to the selected radio.
-- Customize the code to suit your own radio. I tested with a QYT WP12 etc.
+- Customize the code to suit your own radio. I tested with a QYT WP12 etc. (Lines 56,62,71)
 
 In Use:
 Three buttons:
@@ -33,6 +33,7 @@ There is an RGB led:
 - Colours for Write1, Write2 and Read (Yellow, Purple, Cyan)
 
 Start at command line or as a systemctl service.
+
 Stop = Shutdown: Hold Read button for two seconds and release. (Pi will shutdown)
 
 
