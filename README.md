@@ -16,21 +16,21 @@ Behavior
 - This device is a headless, portable programmer. 
 
 Requires: 
--Raspberry Pi zero or other with the "pocket" GPIO daughterboard (see below)
--Chirp radio software installed (includes chirpc the CLI)
--required cable from the Pi to the selected radio.
--Customize the code to suit your own radio. I tested with a QYT WP12 etc.
+- Raspberry Pi zero or other with the "pocket" GPIO daughterboard (see below)
+- Chirp radio software installed (includes chirpc the CLI)
+- Required cable from the Pi to the selected radio.
+- Customize the code to suit your own radio. I tested with a QYT WP12 etc.
 
 In Use:
 Three buttons:
-1   Write1: Uploads the Chirp program version1.img to the radio
-2   Write2: Uploads the Chirp program version2.img to the radio
-3   Read: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers
+- Write1: Uploads the Chirp program version1.img to the radio
+- Write2: Uploads the Chirp program version2.img to the radio
+- Read: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers
 
 There is an RGB led: 
-Green: Ready
-Red: Stopped / shutdown
-Colours for Write1, Write2 and Read (Yellow, Purple, Blue)
+- Green: Ready
+- Red: Stopped / shutdown
+- Colours for Write1, Write2 and Read (Yellow, Purple, Cyan)
 
 Start at command line or as a systemctl service.
 Stop = Shutdown: Hold Read button for two seconds and release. (Pi will shutdown)
