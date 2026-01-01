@@ -9,7 +9,7 @@ Quick usage
 
 ```bash
 cd ~/Documents/Code/python/pocket
-python3 pocket.py --dry-run
+python3 pocket.py 
 ```
 
 Behavior
