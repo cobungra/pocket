@@ -7,19 +7,36 @@ Quick usage
 
 ```bash
 cd ~/Documents/Code/python/pocket
-# set dry-run via env var or CLI flag
-POCKET_DRY_RUN=1 python3 pocket.py
-# or
 python3 pocket.py --dry-run
 ```
 
 Behavior
 - This device is a headless, portable programmer and does not support external config or script overrides.
-- The three default commands for `read`, `write1`, and `write2` are defined directly in `pocket.py` in the `DEFAULT_COMMANDS` map.
-- Edit `pocket.py` to change those commands; this keeps the runtime simple and robust for field use.
 
-Dry-run mode
-- Use `POCKET_DRY_RUN=1` or `python3 pocket.py --dry-run` (or `-n`) to print the commands that would be run without executing them. This is useful for field verification.
+Requires: 
+-Raspberry Pi zero or other with the "pocket" GPIO daughterboard (see below)
+-Chirp radio software installed (includes chirpc the CLI)
+-required cable from the Pi to the selected radio.
+-Customize the code to suit your own radio. I tested with a QYT WP12 etc.
+
+In Use:
+Three buttons:
+1   Write1: Uploads the Chirp program version1.img to the radio
+2   Write2: Uploads the Chirp program version2.img to the radio
+3   Read: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers
+
+There is an RGB led: 
+Green: Ready
+Red: Stopped / shutdown
+Colours for Write1, Write2 and Read (Yellow, Purple, Blue)
+
+Start at command line or as a systemctl service.
+Stop = Shutdown: Hold Read button for two seconds and release. (Pi will shutdown)
+
+
+
+- The three default commands for `read`, `write1`, and `write2` are defined directly in `pocket.py` 
+- Edit `pocket.py` to change those commands; this keeps the runtime simple and robust for field use.
 
 Downloads
 - `read` will save downloaded mmap files incrementally as `download1.img`, `download2.img`, ... in the same folder as the configured `--mmap` path to avoid overwriting existing files.
