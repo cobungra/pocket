@@ -52,6 +52,7 @@ Safety
 - `pocket.py` will warn on startup if `chirpc` is not in PATH.
 -------------------------------------------------------------------
 Construction:
+
 Straightforward, use a common cathode RGB led.
 Perhaps put the pi in a plastic box with exposed pins, but in any case ensure that the board canot short or foul the pi's circuitry!
 I take no reponsibility for unintended consequences of this project.
