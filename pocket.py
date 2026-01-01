@@ -18,7 +18,7 @@ WRITE1_PIN = 13
 WRITE2_PIN = 19
 READ_PIN = 26
 LONG_PRESS_SEC = 2.0
-# DOUBLE_PRESS_WINDOW = 0.6 # not used
+# DOUBLE_PRESS_WINDOW = 0.6 # not used now
 
 _press_start = 0.0
 # _last_press = 0.0
