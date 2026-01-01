@@ -13,7 +13,7 @@ python3 pocket.py
 ```
 
 Behavior
-- This device is a headless, portable programmer and does not support external config or script overrides.
+- This device is a headless, portable programmer. 
 
 Requires: 
 -Raspberry Pi zero or other with the "pocket" GPIO daughterboard (see below)
