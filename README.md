@@ -1,5 +1,7 @@
 # pocket
 
+![Daughterboard](https://github.com/cobungra/pocket/blob/main/assets/PCB_1.png)
+
 This folder contains the `pocket.py` button-driven runner for controlling chirp (radio read/write) via GPIO buttons on a Raspberry Pi.
 
 Quick usage
