@@ -1,4 +1,0 @@
-{
-  "deprecated": true,
-  "note": "pocket no longer supports a config.json; default commands are set in pocket.py"
-}
