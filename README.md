@@ -44,7 +44,7 @@ Downloads
 - `read` will save downloaded mmap files incrementally as `download1.img`, `download2.img`, ... in the same folder as the configured `--mmap` path to avoid overwriting existing files.
 
 Error handling
-- Some radios may return transient warnings like: "WARNING: Short reading 1 bytes from the 2 requested." In many cases uploads/downloads still finish successfully.
+- Some radios may return transient warnings like: "WARNING: Short reading 1 bytes from the 2 requested." In most cases uploads/downloads still finish successfully.
 - For uploads pocket will retry on warnings/non-zero return codes and will accept reported success when present.
 - For downloads (the `read` action) pocket treats progress lines like "Cloning from radio" as success. Short-read warnings without any success text will trigger retries (short-read messages are uncommon for downloads).
 
