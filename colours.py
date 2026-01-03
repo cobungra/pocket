@@ -1,3 +1,6 @@
+# Version to select colour named images to upload
+# Green, Yellow, Blue, Red, Cyan, Pink, Purple
+
 from gpiozero import RGBLED
 from signal import pause
 from time import sleep
@@ -13,19 +16,40 @@ led.color = (1, 0, 0) # Red
 sleep(1)
 led.color = (0, 1, 0) # Green
 
+# Available colours: (name, rgb tuple, filename)
+COLORS = [
+    ("green",  (0, 1, 0), "green.img"),
+    ("yellow", (1, 0.7, 0), "yellow.img"),
+    ("blue",   (0, 0, 1), "blue.img"),
+    ("red",    (1, 0, 0), "red.img"),
+    ("pink",   (1, 0, 1), "pink.img"),
+    ("cyan",   (0, 1, 1), "cyan.img"),
+    ("purple", (0.5, 0, 1), "purple.img"),
+]
+SELECTED_INDEX = 0
+selected_colour = COLORS[SELECTED_INDEX][0]
 
-WRITE1_PIN = 13
-WRITE2_PIN = 19
+# Dry run support via POCKET_DRY_RUN (useful when developing off-device)
+DRY_RUN = os.getenv("POCKET_DRY_RUN", "").lower() in ("1", "true", "yes")
+
+# Set initial LED to match the selected colour
+try:
+    led.color = COLORS[SELECTED_INDEX][1]
+except Exception:
+    pass
+
+SELECT_PIN = 13
+WRITE_PIN = 19
 READ_PIN = 26
 LONG_PRESS_SEC = 2.0
-# DOUBLE_PRESS_WINDOW = 0.6 # not used now
+# DOUBLE_PRESS_WINDOW = 0.6
 
 _press_start = 0.0
 # _last_press = 0.0
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(WRITE1_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(WRITE2_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(SELECT_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(WRITE_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(READ_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 def _next_incremental_filename(path):
@@ -50,18 +74,39 @@ def _next_incremental_filename(path):
     return os.path.join(d, f"{name}{nextn}{ext}")
 
 
-def write1():
-        print("Button 1 pressed. Running write1.py")
-        led.color = (1, , 0)
-        subprocess.run(["chirpc", "-r", "QYT_KT-WP12", "--serial=/dev/ttyUSB0", "--mmap=/home/pi/Documents/RadioCode/version1.img", "--upload-mmap"])
-        led.color = (0, 1, 0) 
-        print("Waiting for button press...")       
-def write2():
-        print("Button 2 pressed. Running write2.py")
+def select():
+    """Cycle the selected colour and update the LED."""
+    global SELECTED_INDEX, selected_colour
+    SELECTED_INDEX = (SELECTED_INDEX + 1) % len(COLORS)
+    name, rgb, fname = COLORS[SELECTED_INDEX]
+    selected_colour = name
+    print(f"Button 1 Select colour pressed. Selected: {name}")
+    try:
+        led.color = rgb
+    except Exception:
+        pass
+    print("Waiting for button press...")
+
+def write():
+    """Upload the currently selected colour's image."""
+    name, rgb, fname = COLORS[SELECTED_INDEX]
+    print(f"Button 2 pressed. Uploading {fname} (selected={name})")
+    # indicate running
+    try:
         led.color = (1, 0, 1)
-        subprocess.run(["chirpc", "-r", "QYT_KT-WP12", "--serial=/dev/ttyUSB0", "--mmap=/home/pi/Documents/RadioCode/version2.img", "--upload-mmap"])
-        led.color = (0, 1, 0)
-        print("Waiting for button press...")
+    except Exception:
+        pass
+    cmd = ["chirpc", "-r", "QYT_KT-WP12", "--serial=/dev/ttyUSB0", f"--mmap=/home/pi/Documents/RadioCode/{fname}", "--upload-mmap"]
+    if DRY_RUN:
+        print("DRY RUN: " + " ".join(cmd))
+    else:
+        subprocess.run(cmd)
+    # restore LED to selected colour
+    try:
+        led.color = COLORS[SELECTED_INDEX][1]
+    except Exception:
+        pass
+    print("Waiting for button press...")
 def read():
         print("Button 3 pressed. Running read.py")
         led.color = (0, 1, 1)
@@ -92,8 +137,8 @@ def _on_read_edge(channel):
 # Main loop to wait for button presses
 
 GPIO.add_event_detect(READ_PIN, GPIO.BOTH, callback=_on_read_edge, bouncetime=50)
-GPIO.add_event_detect(WRITE1_PIN, GPIO.FALLING, callback=lambda x: write1(), bouncetime=300)
-GPIO.add_event_detect(WRITE2_PIN, GPIO.FALLING, callback=lambda x: write2(), bouncetime=300)
+GPIO.add_event_detect(SELECT_PIN, GPIO.FALLING, callback=lambda x: select(), bouncetime=300)
+GPIO.add_event_detect(WRITE_PIN, GPIO.FALLING, callback=lambda x: write(), bouncetime=300)
 print(">>>> Pocket is ready. <<<<")
 print("Waiting for button press...")
 try:
