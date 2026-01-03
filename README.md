@@ -37,9 +37,17 @@ Start at command line or as a systemctl service.
 Stop = Shutdown: Hold Read button for two seconds and release. (Pi will shutdown)
 
 
-
 - The three default commands for `read`, `write1`, and `write2` are defined directly in `pocket.py` 
 - Edit `pocket.py` to change those commands; this keeps the runtime simple and robust for field use.
+
+---------------------------------------------------------------
+
+The colours.py version supports writing of 7 images:
+- This software treats button1 as select: Green/Yellow/Blue/Red/Pink/Cyan/Purple
+- Select a colour and the relevant image green.img / yellow.img .. etc 
+- Press button 2 to write this file t0 the radio.
+- Button 3 is download as usual
+
 
 Downloads
 - `read` will save downloaded mmap files incrementally as `download1.img`, `download2.img`, ... in the same folder as the configured `--mmap` path to avoid overwriting existing files.
