@@ -1,5 +1,5 @@
 # Version to select colour named images to upload
-# Green, Yellow, Blue, Red, Cyan, Pink, Purple
+# Green, Yellow, Blue, Red, Pink,Cyan, Purple
 
 from gpiozero import RGBLED
 from signal import pause
@@ -19,12 +19,12 @@ led.color = (0, 1, 0) # Green
 # Available colours: (name, rgb tuple, filename)
 COLORS = [
     ("green",  (0, 1, 0), "green.img"),
-    ("yellow", (1, 0.7, 0), "yellow.img"),
-    ("blue",   (0, 0, 1), "blue.img"),
+    ("yellow", (1, 0.3, 0), "yellow.img"),
+    ("blue",   (0, 0.1, 1), "blue.img"),
     ("red",    (1, 0, 0), "red.img"),
-    ("pink",   (1, 0, 1), "pink.img"),
+    ("pink",   (1, 0.1, 1), "pink.img"),
     ("cyan",   (0, 1, 1), "cyan.img"),
-    ("purple", (0.5, 0, 1), "purple.img"),
+    ("purple", (0.3, 0, 1), "purple.img"),
 ]
 SELECTED_INDEX = 0
 selected_colour = COLORS[SELECTED_INDEX][0]
