@@ -3,6 +3,7 @@
 
 This is a simple device and softare to help reprogram ham radios in the field.
 The device plugs into a Raspberry Pi Zero.
+
 With Chirp installed and one of these python scripts, it can upload preloaded images from the SDcard to the radio, or download the current installed image to a file.
 
 
@@ -67,14 +68,21 @@ Error handling
 Safety
 - `pocket.py` will warn on startup if `chirpc` is not in PATH.
 -------------------------------------------------------------------
+## Parts list
+
+PCB or suitable breadboard.
+2   20 pin femaale headers
+3   Tactile buttons
+1   RGB led - common cathode
+3   300R resistors
+
+
 ## Construction:
 
 - Straightforward, use a common cathode RGB led.
 - Perhaps put the pi in a plastic box with exposed pins, but in any case ensure that the board canot short or foul the pi's circuitry!
 - I take no reponsibility for unintended consequences of this project.
 - The code is minimal and works for me. Improve it as you see fit.
-
-I do not authorize commercial use of the board design or code.
 
 --------------------------------------------------------------------
 
