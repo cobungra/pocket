@@ -64,6 +64,7 @@ Construction:
 - The code is minimal and works for me. Improve it as you see fit.
 
 I do not authorize commercial use of the board design or code.
+
 --------------------------------------------------------------------
 
 PCB
