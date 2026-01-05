@@ -1,6 +1,5 @@
 # pocket - Headless Chirp uploader for Raspberry Pi
-![pocketpi programmer](https://github.com/cobungra/pocket/blob/main/assets/pocketpi.jpg  )
-![PCB](https://github.com/cobungra/pocket/blob/main/assets/PCB_1.png)
+![pocketpi programmer](https://github.com/cobungra/pocket/blob/main/assets/pocketpi2.png )
 
 This folder contains the `pocket.py` button-driven runner for controlling chirp (radio read/write) via GPIO buttons on a Raspberry Pi.
 
@@ -65,5 +64,11 @@ Construction:
 - The code is minimal and works for me. Improve it as you see fit.
 
 I do not authorize commercial use of the board design or code.
+
+PCB
+
+![PCB](https://github.com/cobungra/pocket/blob/main/assets/PCB_1.png)
+
+
 
 VK3MBT
