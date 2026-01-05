@@ -67,13 +67,13 @@ I do not authorize commercial use of the board design or code.
 
 PCB
 
-GPIO 13 > Switch 1 > Gnd
-GPIO 19 > Switch 2 > Gnd
-GPIO 26 > Switch 3 > Gnd
-GPIO 17 > 330R > LED R
-GPIO 27 > 330R > LED G
-GPIO 22 > 330R > LED B
-Gnd     >      > LED Cathode
+- GPIO 13 > Switch 1 > Gnd
+- GPIO 19 > Switch 2 > Gnd
+- GPIO 26 > Switch 3 > Gnd
+- GPIO 17 > 330R > LED R
+- GPIO 27 > 330R > LED G
+- GPIO 22 > 330R > LED B
+- Gnd     >      > LED Cathode
 
 
 ![PCB](https://github.com/cobungra/pocket/blob/main/assets/PCB_1.png)
