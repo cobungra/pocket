@@ -1,20 +1,25 @@
 # pocket - Headless Chirp uploader for Raspberry Pi
 ![pocketpi programmer](https://github.com/cobungra/pocket/blob/main/assets/pocketpi2.png )
 
-This folder contains the `pocket.py` button-driven runner for controlling chirp (radio read/write) via GPIO buttons on a Raspberry Pi.
+This is a simple device and softare to help reprogram ham radios in the field.
+The device plugs into a Raspberry Pi Zero.
+With Chirp installed and one of these python scripts, it can upload preloaded images from the SDcard to the radio, or download the current installed image to a file.
 
-Quick usage
+
+
+## Quick usage
+- Create the desired radio image files using Chirp.
+- Copy the images to the Pi's SDcard (e.g. into /home/pi/Documents/RadioCode/) using the naming conventions described below.
+In the field:
 - Run on the Pi (needs GPIO privileges and chirpc accessible in PATH):
+- Use the buttons to upload or download images.
 
 ```bash
-cd ~/Documents/Code/python/pocket
 python3 pocket.py 
 ```
 
-Behavior
-- This device is a headless, portable programmer. 
 
-Requires: 
+## Requires: 
 - Raspberry Pi zero or other with the "pocket" GPIO daughterboard (see below)
 - Chirp radio software installed (includes chirpc the CLI)
 - Required cable from the Pi to the selected radio.
@@ -24,7 +29,13 @@ pocket.py -Select from seven images to upload
 
 minimal.py -Simple version for two images
 
-In Use:
+## In Use:
+Start the program on the Raspberry Pi. 
+```bash
+python3 pocket.py 
+```
+This could autostart at boot using systemd. (see Docs)
+
 pocket.py: Three buttons
 - Button 1: Select one of seven led colours to choose a named image ( Green/Yellow/Blue/Red/Pink/Cyan/Purple)
 - Button 2: Upload the named image (green.img / yellow.img .. etc)
@@ -56,7 +67,7 @@ Error handling
 Safety
 - `pocket.py` will warn on startup if `chirpc` is not in PATH.
 -------------------------------------------------------------------
-Construction:
+## Construction:
 
 - Straightforward, use a common cathode RGB led.
 - Perhaps put the pi in a plastic box with exposed pins, but in any case ensure that the board canot short or foul the pi's circuitry!
@@ -67,7 +78,7 @@ I do not authorize commercial use of the board design or code.
 
 --------------------------------------------------------------------
 
-PCB
+## PCB
 
 - GPIO 13 > Switch 1 > Gnd
 - GPIO 19 > Switch 2 > Gnd
