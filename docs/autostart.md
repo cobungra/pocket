@@ -18,7 +18,9 @@ RemainAfterExit=true
 [Install]
 WantedBy=multi-user.target
 ```
+
 Pay attention to the exact path where you installed the python script that you are starting.
+Change to minimal.py if required..
 
 Save and exit: Ctrl+X, then Ctrl+Y, then Enter
 
@@ -32,6 +34,7 @@ Reboot the pi
 
 ## Useful systemd commands:
 ``` 
-sudo systemclt status
-sudo systemclt restart
+sudo systemclt status pocket.service
+sudo systemclt restart pocket.service
+etc...
 ```

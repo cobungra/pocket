@@ -33,7 +33,7 @@ minimal.py -Simple version for two images
 ## In Use:
 Start the program on the Raspberry Pi. 
 ```bash
-python3 pocket.py 
+python3 pocket.py (or minimal.py)
 ```
 This could autostart at boot using systemd. (see Docs)
 
@@ -53,20 +53,13 @@ Stop = Shutdown: Hold Buton 3 button for two seconds and release. (Pi will shutd
 Start at command line or as a systemctl service. 
 To run headless I recommend start the program automaticaaly at boot.
 
-- The  default commands for `read`, `write1`, and `write2` are defined directly in `pocket.py` or `minimal.py` 
-- 
-
 ---------------------------------------------------------------
 Downloads
 - `read` will save downloaded mmap files incrementally as `download1.img`, `download2.img`, ... in the same folder as the configured `--mmap` path to avoid overwriting existing files.
 
 Error handling
 - Some radios may return transient warnings like: "WARNING: Short reading 1 bytes from the 2 requested." In most cases uploads/downloads still finish successfully.
-- For uploads pocket will retry on warnings/non-zero return codes and will accept reported success when present.
-- For downloads (the `read` action) pocket treats progress lines like "Cloning from radio" as success. Short-read warnings without any success text will trigger retries (short-read messages are uncommon for downloads).
 
-Safety
-- `pocket.py` will warn on startup if `chirpc` is not in PATH.
 -------------------------------------------------------------------
 ## Parts list
 
@@ -88,7 +81,6 @@ PCB or suitable breadboard.
 - I take no reponsibility for unintended consequences of this project.
 - The code is minimal and works for me. Improve it as you see fit.
 
---------------------------------------------------------------------
 
 ## PCB
 
