@@ -1,4 +1,4 @@
-# pocket
+# pocket - Headless Chirp uploader for Raspberry Pi
 ![pocketpi programmer](https://github.com/cobungra/pocket/blob/main/assets/pocketpi.jpg  )
 ![PCB](https://github.com/cobungra/pocket/blob/main/assets/PCB_1.png)
 
