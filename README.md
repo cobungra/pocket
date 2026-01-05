@@ -19,36 +19,33 @@ Requires:
 - Raspberry Pi zero or other with the "pocket" GPIO daughterboard (see below)
 - Chirp radio software installed (includes chirpc the CLI)
 - Required cable from the Pi to the selected radio.
-- Customize the code to suit your own radio. I tested with a QYT WP12 etc. (Lines 56,62,71)
+- Customize the code to suit your own radio. I tested with a QYT WP12 etc. (pocket.py: Lines 104,121) or (minimal.py: Lines 62,68,77). Edit the file to reflect your needs (ie name of radio). While logged into the pi, `chirpc --list-radios` provides the names.
+
+pocket.py -Select from seven images to upload
+
+minimal.py -Simple version for two images
 
 In Use:
-Three buttons:
-- Write1: Uploads the Chirp program version1.img to the radio
-- Write2: Uploads the Chirp program version2.img to the radio
-- Read: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers
-
-There is an RGB led: 
-- Green: Ready
-- Red: Stopped / shutdown
-- Colours for Write1, Write2 and Read (Yellow, Purple, Cyan)
-
-Start at command line or as a systemctl service.
-
-Stop = Shutdown: Hold Read button for two seconds and release. (Pi will shutdown)
+pocket.py: Three buttons
+- Button 1: Select one of seven led colours to choose a named image ( Green/Yellow/Blue/Red/Pink/Cyan/Purple)
+- Button 2: Upload the named image (green.img / yellow.img .. etc)
+- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers
 
 
-- The three default commands for `read`, `write1`, and `write2` are defined directly in `pocket.py` 
-- Edit `pocket.py` to change those commands; this keeps the runtime simple and robust for field use.
+minimal.py: Three buttons:
+- Button 1: Uploads the Chirp program version1.img to the radio
+- Button 2: Uploads the Chirp program version2.img to the radio
+- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers
+
+Stop = Shutdown: Hold Buton 3 button for two seconds and release. (Pi will shutdown)
+
+Start at command line or as a systemctl service. 
+To run headless I recommend start the program automaticaaly at boot.
+
+- The  default commands for `read`, `write1`, and `write2` are defined directly in `pocket.py` or `minimal.py` 
+- 
 
 ---------------------------------------------------------------
-
-The colours.py version supports writing of 7 images:
-- This software treats button1 as select: Green/Yellow/Blue/Red/Pink/Cyan/Purple
-- Select a colour and the relevant image green.img / yellow.img .. etc 
-- Press button 2 to write this file t0 the radio.
-- Button 3 is download as usual
-
-
 Downloads
 - `read` will save downloaded mmap files incrementally as `download1.img`, `download2.img`, ... in the same folder as the configured `--mmap` path to avoid overwriting existing files.
 
@@ -68,3 +65,5 @@ Construction:
 - The code is minimal and works for me. Improve it as you see fit.
 
 I do not authorize commercial use of the board design or code.
+
+VK3MBT
