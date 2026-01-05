@@ -71,9 +71,13 @@ Safety
 ## Parts list
 
 PCB or suitable breadboard.
+
 2   20 pin femaale headers
+
 3   Tactile buttons
+
 1   RGB led - common cathode
+
 3   300R resistors
 
 
