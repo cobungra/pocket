@@ -65,7 +65,7 @@ Error handling
 
 PCB or suitable breadboard.
 
-2   20 pin femaale headers
+2   20 pin female headers
 
 3   Tactile buttons
 
@@ -93,7 +93,7 @@ PCB or suitable breadboard.
 - Gnd     >      > LED Cathode
 
 
-![PCB](https://github.com/cobungra/pocket/blob/main/assets/PCB_1.png)
+![PCB](https://github.com/cobungra/pocket/blob/main/assets/pcb004.png)
 
 
 
