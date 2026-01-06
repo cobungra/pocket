@@ -36,27 +36,23 @@ Start the program on the Raspberry Pi.
 ```bash
 python3 pocket.py (or minimal.py)
 ```
-This could autostart at boot using systemd. (see Docs)
+To run headless I recommend start the program automatically at boot using systemd. (see docs/autostart for an example)
 
 pocket.py: Three buttons
 - Button 1: Select one of seven led colours to choose a named image ( Green/Yellow/Blue/Red/Pink/Cyan/Purple)
 - Button 2: Upload the named image (green.img / yellow.img .. etc)
-- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers
+- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers in the same folder as configured in `--mmap` path to avoid overwriting existing files.
 
 
 minimal.py: Three buttons:
 - Button 1: Uploads the Chirp program version1.img to the radio
 - Button 2: Uploads the Chirp program version2.img to the radio
-- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers
+- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers in the same folder as configured in `--mmap` path to avoid overwriting existing files.
 
-Stop = Shutdown: Hold Buton 3 button for two seconds and release. (Pi will shutdown)
+Stop = Shutdown: Hold Button 3 for two seconds and release. (Pi will shutdown)
 
-Start at command line or as a systemctl service. 
-To run headless I recommend start the program automaticaaly at boot.
 
 ---------------------------------------------------------------
-Downloads
-- `read` will save downloaded mmap files incrementally as `download1.img`, `download2.img`, ... in the same folder as the configured `--mmap` path to avoid overwriting existing files.
 
 Error handling
 - Some radios may return transient warnings like: "WARNING: Short reading 1 bytes from the 2 requested." In most cases uploads/downloads still finish successfully.
