@@ -36,18 +36,18 @@ Start the program on the Raspberry Pi.
 ```bash
 python3 pocket.py (or minimal.py)
 ```
-To run headless I recommend start the program automatically at boot using systemd. (see docs/autostart for an example)
+To run headless I recommend starting the program automatically at boot using systemd. (see docs/autostart for an example)
 
 pocket.py: Three buttons
 - Button 1: Select one of seven led colours to choose a named image ( Green/Yellow/Blue/Red/Pink/Cyan/Purple)
 - Button 2: Upload the named image (green.img / yellow.img .. etc)
-- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers in the same folder as configured in `--mmap` path to avoid overwriting existing files.
+- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers in the folder configured in `--mmap` path to avoid overwriting existing files.
 
 
 minimal.py: Three buttons:
 - Button 1: Uploads the Chirp program version1.img to the radio
 - Button 2: Uploads the Chirp program version2.img to the radio
-- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers in the same folder as configured in `--mmap` path to avoid overwriting existing files.
+- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers in the folder configured in `--mmap` path to avoid overwriting existing files.
 
 Stop = Shutdown: Hold Button 3 for two seconds and release. (Pi will shutdown)
 
