@@ -25,7 +25,7 @@ python3 pocket.py
 - Raspberry Pi zero or other with the "pocket" GPIO daughterboard (see below)
 - Chirp radio software installed (includes chirpc the CLI)
 - Required cable from the Pi to the selected radio.
-- Customize the code to suit your own radio. I tested with a QYT WP12 etc. (pocket.py: Lines 104,121) or (minimal.py: Lines 62,68,77). Edit the file to reflect your needs (ie name of radio). While logged into the pi, `chirpc --list-radios` provides the names.
+- Customize the code to suit your own radio. I tested with a QYT WP12 etc. (pocket.py: Lines 104,118,121) or (minimal.py: Lines 62,68,74,77). Edit the file to reflect your needs (ie name of radio). While logged into the pi, `chirpc --list-radios` provides the names.
 
 pocket.py -Select from seven images to upload
 
