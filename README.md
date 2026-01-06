@@ -1,7 +1,7 @@
 # pocket - Headless Chirp uploader for Raspberry Pi
 ![pocketpi programmer](https://github.com/cobungra/pocket/blob/main/assets/pocketpi2.png )
 
-This is a simple device and softare to help reprogram ham radios in the field.
+This is a simple device and software to help reprogram ham radios in the field.
 The device plugs onto a Raspberry Pi Zero.
 
 With Chirp installed and one of these python scripts, it can upload preloaded images from the SDcard to the radio, or download the current installed image to a file.
