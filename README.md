@@ -2,7 +2,7 @@
 ![pocketpi programmer](https://github.com/cobungra/pocket/blob/main/assets/pocketpi2.png )
 
 This is a simple device and softare to help reprogram ham radios in the field.
-The device plugs into a Raspberry Pi Zero.
+The device plugs onto a Raspberry Pi Zero.
 
 With Chirp installed and one of these python scripts, it can upload preloaded images from the SDcard to the radio, or download the current installed image to a file.
 
@@ -11,6 +11,7 @@ With Chirp installed and one of these python scripts, it can upload preloaded im
 ## Quick usage
 - Create the desired radio image files using Chirp.
 - Copy the images to the Pi's SDcard (e.g. into /home/pi/Documents/RadioCode/) using the naming conventions described below.
+
 In the field:
 - Run on the Pi (needs GPIO privileges and chirpc accessible in PATH):
 - Use the buttons to upload or download images.
