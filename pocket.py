@@ -2,8 +2,8 @@
 # Version to select colour named images to upload
 # Green, Yellow, Blue, Red, Pink,Cyan, Purple
 # Button 1 - Select Colour
-# Button 2 - Upload selected colour named image
-# Button 3 - Download from Radio
+# Button 2 - Upload selected colour named image and the connected radio
+# Button 3 - Download from Radio (will save to selected colour's radio folder)
 # Long press Button 3 - Shutdown Pi
 
 from gpiozero import RGBLED
@@ -157,7 +157,7 @@ def _on_read_edge(channel):
 GPIO.add_event_detect(READ_PIN, GPIO.BOTH, callback=_on_read_edge, bouncetime=50)
 GPIO.add_event_detect(SELECT_PIN, GPIO.FALLING, callback=lambda x: select(), bouncetime=300)
 GPIO.add_event_detect(WRITE_PIN, GPIO.FALLING, callback=lambda x: write(), bouncetime=300)
-print(">>>> Pocket 1.2 is ready. <<<<")
+print(">>>> Pocket 1.3 is ready. <<<<")
 print("Waiting for button press...")
 try:
     pause()  # wait indefinitely until signal (callbacks will run)
