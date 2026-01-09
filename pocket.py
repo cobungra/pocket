@@ -23,13 +23,13 @@ led.color = (0, 1, 0) # Green
 
 # Available colours: (name, rgb tuple, filename)
 COLORS = [
-    ("green",  (0, 1, 0), "green.img"),
-    ("yellow", (1, 0.3, 0), "yellow.img"),
-    ("blue",   (0, 0.1, 1), "blue.img"),
-    ("red",    (1, 0, 0), "red.img"),
-    ("pink",   (1, 0.1, 1), "pink.img"),
-    ("cyan",   (0, 1, 1), "cyan.img"),
-    ("purple", (0.3, 0, 1), "purple.img"),
+    ("green",  (0, 1, 0), "green.img","QYT_KT-WP12"),
+    ("yellow", (1, 0.3, 0), "yellow.img","QYT_KT-WP12"),
+    ("blue",   (0, 0.1, 1), "blue.img","QYT_KT-WP12"),
+    ("red",    (1, 0, 0), "red.img","QYT_KT-WP12"),
+    ("pink",   (1, 0.1, 1), "pink.img","Baofeng_UV-5R"),
+    ("cyan",   (0, 1, 1), "cyan.img","Baofeng_UV-5R"),
+    ("purple", (0.3, 0, 1), "purple.img","Baofeng_UV-5R"),
 ]
 SELECTED_INDEX = 0
 selected_colour = COLORS[SELECTED_INDEX][0]
@@ -83,8 +83,9 @@ def select():
     """Cycle the selected colour and update the LED."""
     global SELECTED_INDEX, selected_colour
     SELECTED_INDEX = (SELECTED_INDEX + 1) % len(COLORS)
-    name, rgb, fname = COLORS[SELECTED_INDEX]
+    name, rgb, fname, radio = COLORS[SELECTED_INDEX]
     selected_colour = name
+    directory =  radio
     print(f"Button 1 Select colour pressed. Selected: {name}")
     try:
         led.color = rgb
@@ -94,14 +95,15 @@ def select():
 
 def write():
     """Upload the currently selected colour's image."""
-    name, rgb, fname = COLORS[SELECTED_INDEX]
-    print(f"Button 2 pressed. Uploading {fname} (selected={name})")
+    name, rgb, fname, radio = COLORS[SELECTED_INDEX]
+    directory = radio 
+    print(f"Button 2 pressed. Uploading {radio} {fname} (selected={name})")
     # indicate running
     try:
         led.color = (1, 0, 1)
     except Exception:
         pass
-    cmd = ["chirpc", "-r", "QYT_KT-WP12", "--serial=/dev/ttyUSB0", f"--mmap=/home/pi/Documents/RadioCode/{fname}", "--upload-mmap"]
+    cmd = ["chirpc", "-r", f"{radio}", "--serial=/dev/ttyUSB0", f"--mmap=/home/pi/Radios/{directory}/{fname}", "--upload-mmap"]
     if DRY_RUN:
         print("DRY RUN: " + " ".join(cmd))
     else:
@@ -115,10 +117,13 @@ def write():
 def read():
     print("Button 3 pressed. Downloading from Radio.")
     led.color = (0, 1, 1)
-    base_mmap = "/home/pi/Documents/RadioCode/download.img"
+    # base_mmap = "/home/pi/Documents/RadioCode/download.img"
+    name, rgb, fname, radio = COLORS[SELECTED_INDEX]
+    base_mmap = f"/home/pi/Radios/{radio}/download.img"
+    # base_mmap = f"/home/pi/Documents/{radio}"
     target_mmap = _next_incremental_filename(base_mmap)
     print(f"Saving download to {target_mmap}")
-    cmd = ["chirpc", "-r", "QYT_KT-WP12", "--serial=/dev/ttyUSB0", f"--mmap={target_mmap}", "--download-mmap"]
+    cmd = ["chirpc", "-r", f"{radio}", "--serial=/dev/ttyUSB0", f"--mmap={target_mmap}", "--download-mmap"]
     if DRY_RUN:
         print("DRY RUN: " + " ".join(cmd))
     else:
@@ -152,7 +157,7 @@ def _on_read_edge(channel):
 GPIO.add_event_detect(READ_PIN, GPIO.BOTH, callback=_on_read_edge, bouncetime=50)
 GPIO.add_event_detect(SELECT_PIN, GPIO.FALLING, callback=lambda x: select(), bouncetime=300)
 GPIO.add_event_detect(WRITE_PIN, GPIO.FALLING, callback=lambda x: write(), bouncetime=300)
-print(">>>> Pocket 0.7 is ready. <<<<")
+print(">>>> Pocket 1.2 is ready. <<<<")
 print("Waiting for button press...")
 try:
     pause()  # wait indefinitely until signal (callbacks will run)
