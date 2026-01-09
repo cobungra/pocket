@@ -21,7 +21,7 @@ led.color = (1, 0, 0) # Red
 sleep(1)
 led.color = (0, 1, 0) # Green
 
-# Available colours: (name, rgb tuple, filename)
+# Available colours: (name, rgb tuple, filename, radio model)
 COLORS = [
     ("green",  (0, 1, 0), "green.img","QYT_KT-WP12"),
     ("yellow", (1, 0.3, 0), "yellow.img","QYT_KT-WP12"),
