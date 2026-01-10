@@ -1,0 +1,7 @@
+#!/bin/sh
+# Simple pre-commit hook to update pocket.py build timestamp before commit.
+set -e
+
+python3 scripts/update_build_ts.py pocket.py || true
+# If the script modified pocket.py, it already ran 'git add pocket.py'.
+exit 0

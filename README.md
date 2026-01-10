@@ -9,10 +9,11 @@ With Chirp installed and one of these python scripts, it can upload preloaded im
 
 
 ## Quick usage
+The image files will be saved into /home/pi/{radioname} where {radioname} is the chirpc name for your radio (chirpc --list-radios)
+- First run, connect to the radio, select a colour and Download (Button 3).  This will create the working folder for that radio.
 - Create the desired radio image files using Chirp.
-- The image files should be saved into /home/pi/{radioname} where {radioname} is the chirpc name for your radio (chirpc --list-radios)
 - Copy the images to the Pi's SDcard relevant directory (e.g. into /home/pi/Radios/Baofeng_UV-5R) using the naming conventions described below.
-- pocket.py will create this directory as required
+
 
 In the field:
 - Run on the Pi (needs GPIO privileges and chirpc accessible in PATH):
@@ -55,6 +56,22 @@ minimal.py: Three buttons:
 
 Stop = Shutdown: Hold Button 3 for two seconds and release. (Pi will shutdown)
 
+
+## Development / Build timestamp 🔧
+- The repo includes a small helper that updates the `Pocket ready` line in `pocket.py` with a build timestamp in **YYMMDDHHMM** format (for example, `2601101503`).
+- To update the timestamp manually: run:
+
+```bash
+python3 scripts/update_build_ts.py pocket.py
+```
+
+- A pre-commit hook is supplied to run the updater automatically before commits. Install the hooks once from the repo root:
+
+```bash
+./scripts/install-hooks.sh
+```
+
+(When the script updates the file it will also `git add` the changed file so the timestamp is included in the commit.)
 
 ---------------------------------------------------------------
 
