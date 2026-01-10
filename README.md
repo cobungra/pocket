@@ -10,13 +10,17 @@ With Chirp installed and one of these python scripts, it can upload preloaded im
 
 ## Quick usage
 - Create the desired radio image files using Chirp.
-- Copy the images to the Pi's SDcard (e.g. into /home/pi/Documents/RadioCode/) using the naming conventions described below.
+- The image files should be saved into /home/pi/{radioname} where {radioname} is the chirpc name for your radio (chirpc --list-radios)
+- Copy the images to the Pi's SDcard relevant directory (e.g. into /home/pi/Radios/Baofeng_UV-5R) using the naming conventions described below.
+- pocket.py will create this directory as required
 
 In the field:
 - Run on the Pi (needs GPIO privileges and chirpc accessible in PATH):
 - Use the buttons to upload or download images.
 
+cd to where you have put the python file (e.g /home/pi/python)
 ```bash
+cd /home/pi/python
 python3 pocket.py 
 ```
 
@@ -25,7 +29,7 @@ python3 pocket.py
 - Raspberry Pi zero or other with the "pocket" GPIO daughterboard (see below)
 - Chirp radio software installed (includes chirpc the CLI)
 - Required cable from the Pi to the selected radio.
-- Customize the code to suit your own radio. I tested with a QYT WP12 etc. (pocket.py: Lines 104,118,121) or (minimal.py: Lines 62,68,74,77). Edit the file to reflect your needs (ie name of radio). While logged into the pi, `chirpc --list-radios` provides the names.
+- Customize the code to suit your own radio. I tested with a UV-5R & QYT WP12. (pocket.py: Lines 26-32) or (minimal.py: Lines 62,68,74,77). Edit the file to reflect your needs (ie name of radio). While logged into the pi, `chirpc --list-radios` provides the names.
 
 pocket.py -Select from seven images to upload
 
