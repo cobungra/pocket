@@ -19,12 +19,6 @@ In the field:
 - Run on the Pi (needs GPIO privileges and chirpc accessible in PATH):
 - Use the buttons to upload or download images.
 
-cd to where you have put the python file (e.g /home/pi/python)
-```bash
-cd /home/pi/python
-python3 pocket.py 
-```
-
 
 ## Requires: 
 - Raspberry Pi zero or other with the "pocket" GPIO daughterboard (see below)
@@ -38,15 +32,19 @@ minimal.py -Simple version for two images
 
 ## In Use:
 Start the program on the Raspberry Pi. 
+cd to where you have put the python file (e.g /home/pi/python)
 ```bash
-python3 pocket.py (or minimal.py)
+cd /home/pi/python
+python3 pocket.py 
 ```
+
 To run headless I recommend starting the program automatically at boot using systemd. (see docs/autostart for an example)
 
 pocket.py: Three buttons
-- Button 1: Select one of seven led colours to choose a named image ( Green/Yellow/Blue/Red/Pink/Cyan/Purple)
+- Button 1: Select one of seven led colours to choose a named image & Radio type ( Green/Yellow/Blue/Red/Pink/Cyan/Purple)
+
 - Button 2: Upload the named image (green.img / yellow.img .. etc)
-- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers in the folder configured in `--mmap` path to avoid overwriting existing files.
+- Button 3: Downloads the current image from the radio and saves on the Pi as download[n].img in increasing numbers into the selected radio folder.
 
 
 minimal.py: Three buttons:
