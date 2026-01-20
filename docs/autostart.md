@@ -9,7 +9,7 @@ Add the configuration like:
 ```
 [Unit]
 Description=Pocket programmer
-After=multi-user.target
+After=network.target
 
 [Service]
 ExecStart=/usr/bin/python3 /home/pi/python/pocket/pocket.py
