@@ -1,4 +1,4 @@
-# pocket - Headless Chirp uploader for Raspberry Pi
+# pocket - Simple Chirp uploader for Raspberry Pi
 ![pocketpi programmer](https://github.com/cobungra/pocket/blob/main/assets/pocketpi2.png )
 
 This is a simple device and software to help reprogram ham radios in the field.
