@@ -6,6 +6,7 @@ The device plugs onto a Raspberry Pi Zero.
 
 With Chirp installed and one of these python scripts, it can upload preloaded images from the SDcard to the radio, or download the current installed image to a file.
 
+(A more advanced version of this device which employs an OLED display: Refer to https://github.com/cobungra/cpocket-Chirp-Uploader-OLED)
 
 
 ## Quick usage
